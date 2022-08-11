@@ -1,0 +1,11 @@
+{
+  "name": "qtrucktests",
+  "version": "1.0.0",
+  "description": "Projeto de Testes E2E Webapp Qtruck",
+  "main": "index.js",
+  "author": "Eduardo Cruz",
+  "license": "MIT",
+  "devDependencies": {
+    "cypress": "^10.4.0"
+  }
+}
