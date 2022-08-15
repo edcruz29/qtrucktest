@@ -11,7 +11,7 @@ Criação de testes automatizados para o Bootcamp de Cypress 10
 - Cypress (10)
 
 
-## Em Contrução!
+## Em Construção!
 
 **Desenvolvido por:**
 **[Eduardo Cruz](https://github.com/edcruz29/).**
