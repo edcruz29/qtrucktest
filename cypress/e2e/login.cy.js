@@ -7,7 +7,7 @@ describe('Login', () => {
       instagram:"@edubehemoth",
       password:"cDz#2020"
     }
-    name="Eduardo"
+    const name="Eduardo"
     cy.login(user)
     cy.loggedUsers(name)
   })
@@ -47,6 +47,28 @@ describe('Login', () => {
     cy.login(user)
     cy.modalHaveText(text)
 
+  });
+
+  it('instagram obrigatório', () => {
+
+    const user={
+      password:"cDz#2022"
+    }
+    const  text="Por favor, informe o seu código do Instagram!"
+    cy.instagramObrigatorio(user)
+    cy.modalHaveText(text)
+    
+  });
+
+  it('senha obrigatória', () => {
+
+    const user={
+      instagram:"@behemothedu"
+    }
+    const  text="Por favor, informe a sua senha secreta!"
+    cy.senhaObrigatoria(user)
+    cy.modalHaveText(text)
+    
   });
 
   it('campos nulos', () => {
