@@ -29,22 +29,24 @@ Cypress.Commands.add('login', (user)=>{
    
   })
 
-  Cypress.Commands.add('senhaObrigatoria', (user)=>{
-    cy.visit('/')
+  // Refatorado!
+  // Cypress.Commands.add('senhaObrigatoria', (user)=>{
+  //   cy.visit('/')
 
-    cy.get('input[name=instagram]').type(user.instagram)
+  //   cy.get('input[name=instagram]').type(user.instagram)
 
-    cy.contains('button', 'Entrar').click()
-  })
+  //   cy.contains('button', 'Entrar').click()
+  // })
 
-  Cypress.Commands.add('instagramObrigatorio', (user)=>{
+  // Cypress.Commands.add('instagramObrigatorio', (user)=>{
   
 
-    cy.get('input[name=password]').type(user.password)
-    cy.contains('button', 'Entrar').click()
-  })
+  //   cy.get('input[name=password]').type(user.password)
+  //   cy.contains('button', 'Entrar').click()
+  // })
 
 
+  
 //CADASTRO 
   Cypress.Commands.add('cadastrar', (user)=>{
 

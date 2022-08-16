@@ -52,10 +52,12 @@ describe('Login', () => {
   it('instagram obrigatório', () => {
 
     const user={
+      instagram:'{backspace}',
       password:"cDz#2022"
     }
     const  text="Por favor, informe o seu código do Instagram!"
-    cy.instagramObrigatorio(user)
+    cy.login(user)
+    // cy.instagramObrigatorio(user)
     cy.modalHaveText(text)
     
   });
@@ -63,18 +65,24 @@ describe('Login', () => {
   it('senha obrigatória', () => {
 
     const user={
-      instagram:"@behemothedu"
+      instagram:"@behemothedu",
+      password:'{backspace}'
     }
     const  text="Por favor, informe a sua senha secreta!"
-    cy.senhaObrigatoria(user)
+    // cy.senhaObrigatoria(user)
+    cy.login(user)
     cy.modalHaveText(text)
     
   });
 
   it('campos nulos', () => {
+    const user={
+      instagram:'{backspace}',
+      password:'{backspace}'
+    }
     const  text="Por favor, informe suas credenciais!"
-    cy.vazios()
-    
+    // cy.vazios()
+    cy.login(user)
     cy.modalHaveText(text)
 
   });
