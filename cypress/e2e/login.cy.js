@@ -1,17 +1,28 @@
+import loginPage from '../support/pages/Login'
+import mapPage from '../support/pages/Map'
+
 describe('Login', () => {
 
-  
-  it('deve logar com sucesso', () => {
+  it.only('deve logar com sucesso', () => {
 
     const user={
       instagram:"@edubehemoth",
       password:"cDz#2020"
     }
     const name="Eduardo"
-    cy.login(user)
-    cy.loggedUsers(name)
+
+    //Login com PageObject
+    loginPage.go()
+    loginPage.form(user)
+    loginPage.submit()
+    mapPage.loggedUser(name)
+
+    //LOgin com Commands
+    // cy.login(user)
+    //cy.loggedUsers(name)
+    
   })
-  it('não deve logar com senha inválida', () => {
+  it.only('não deve logar com senha inválida', () => {
 
     const user={
       instagram:"@edubehemoth",
@@ -20,8 +31,13 @@ describe('Login', () => {
     const text="Credenciais inválidas, tente novamente!"
     
 
-    cy.login(user)
-    cy.modalHaveText(text)
+    //cy.login(user)
+    loginPage.go()
+    loginPage.form(user)
+    loginPage.submit()
+    loginPage.modal.haveText(text)
+
+    //cy.modalHaveText(text)
 
   });
 
@@ -32,7 +48,12 @@ describe('Login', () => {
       password:"cDz#2022"
     }
     const text="Credenciais inválidas, tente novamente!"
-    cy.login(user)
+
+    LoginPage.go()
+    LoginPage.form(user)
+    LoginPage.submit()
+    
+    //cy.login(user)
 
     cy.modalHaveText(text)
 
@@ -44,7 +65,12 @@ describe('Login', () => {
       password:"cDz#2022"
     }
    const  text="Credenciais inválidas, tente novamente!"
-    cy.login(user)
+
+   LoginPage.go()
+    LoginPage.form(user)
+    LoginPage.submit()
+
+    //cy.login(user)
     cy.modalHaveText(text)
 
   });
@@ -52,11 +78,15 @@ describe('Login', () => {
   it('instagram obrigatório', () => {
 
     const user={
-      instagram:'{backspace}',
+      //instagram:'{backspace}',
       password:"cDz#2022"
     }
     const  text="Por favor, informe o seu código do Instagram!"
-    cy.login(user)
+
+    LoginPage.go()
+    LoginPage.form(user)
+    LoginPage.submit()
+    //cy.login(user)
     // cy.instagramObrigatorio(user)
     cy.modalHaveText(text)
     
@@ -66,23 +96,32 @@ describe('Login', () => {
 
     const user={
       instagram:"@behemothedu",
-      password:'{backspace}'
+      //password:'{backspace}'
     }
     const  text="Por favor, informe a sua senha secreta!"
     // cy.senhaObrigatoria(user)
-    cy.login(user)
+
+    LoginPage.go()
+    LoginPage.form(user)
+    LoginPage.submit()
+    //cy.login(user)
     cy.modalHaveText(text)
     
   });
 
   it('campos nulos', () => {
-    const user={
-      instagram:'{backspace}',
-      password:'{backspace}'
-    }
+
+    // const user={
+    //   instagram:'{backspace}',
+    //   password:'{backspace}'
+    // }
     const  text="Por favor, informe suas credenciais!"
     // cy.vazios()
-    cy.login(user)
+    //cy.login({})
+
+    LoginPage.go()
+    LoginPage.submit()
+    //cy.login(user)
     cy.modalHaveText(text)
 
   });

@@ -1,17 +1,22 @@
 
 //Login
-Cypress.Commands.add('login', (user)=>{
-    cy.visit('/')
+// Cypress.Commands.add('login', (user)=>{
 
-    cy.get('input[name=instagram]').type(user.instagram)
-    cy.get('input[name=password]').type(user.password)
+//     cy.visit('/')
+    
+//     //solução do professor
+//     //if (user.instagram) cy.get('input[name=instagram]').type(user.instagram)
+//     //if(user.password) cy.get('input[name=password]').type(user.password)
 
-    cy.contains('button', 'Entrar').click()
-  })
-  Cypress.Commands.add('vazios',()=>{
-    cy.visit('/')
-    cy.contains('button', 'Entrar').click()
-  })
+//     cy.get('input[name=instagram]').type(user.instagram)
+//     cy.get('input[name=password]').type(user.password)
+
+//     cy.contains('button', 'Entrar').click()
+//   })
+//   Cypress.Commands.add('vazios',()=>{
+//     cy.visit('/')
+//     cy.contains('button', 'Entrar').click()
+//   })
 
   Cypress.Commands.add('modalHaveText', (text)=>{
     
@@ -46,7 +51,7 @@ Cypress.Commands.add('login', (user)=>{
   // })
 
 
-  
+
 //CADASTRO 
   Cypress.Commands.add('cadastrar', (user)=>{
 

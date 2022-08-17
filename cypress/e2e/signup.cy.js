@@ -1,16 +1,24 @@
+import signupPage from '../support/pages/Signup'
+
+
 describe('cadastro',()=>{
 
-
-    it('deve cadastrar com sucesso', () => {
+    it.only('deve cadastrar com sucesso', () => {
 
         const user ={
-            name:"Teste3",
-            instagram:"@teste3",
+            name:"Teste6",
+            instagram:"@teste6",
             password:"novoteste2"
         }
-       
-        cy.cadastrar(user)
-        cy.modalHaveText("Agora você pode recomendar e/ou avaliar Food trucks.")
+
+        cy.deleteMany({instagram: user.instagram}, {collection: 'users'}).then(res =>{
+            cy.log(res)
+        })
+      signupPage.go()
+      signupPage.form(user)
+      signupPage.submit()
+
+      signupPage.modal.haveText('Agora você pode recomendar e/ou avaliar Food trucks.')
     });
     
     it('Não deve permitir cadastro de usuário duplicado', () => {
@@ -21,8 +29,11 @@ describe('cadastro',()=>{
             password:"novoteste2"
         }
 
-        cy.cadastrar(user)
-        cy.modalHaveText("Instagram já cadastrado!")
+      signupPage.go()
+      signupPage.form(user)
+      signupPage.submit()
+      signupPage.modal.haveText("Instagram já cadastrado!")
+       
     });
     it('nome obrigatório', () => {
         cy.visit('/signup')
